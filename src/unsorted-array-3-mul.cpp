@@ -5,7 +5,10 @@
 
 using namespace std;
 
-
+/**
+ * https://www.geeksforgeeks.org/top-25-interview-questions/?ref=rp
+ * A unsorted array of integers is given; you need to find the max product formed my multiplying three numbers. (You cannot sort the array, watch out when there are negative numbers)
+ */
 
 int main(int argc, char** argv)
 {
