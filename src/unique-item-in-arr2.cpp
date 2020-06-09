@@ -6,7 +6,9 @@
 
 
 using namespace std;
-
+/*
+ * Works if only one unique number in the array
+ */
 int main()
 {
     vector<int> arr = input_vector<int>();
