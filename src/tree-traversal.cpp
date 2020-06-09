@@ -9,7 +9,7 @@ and a pointer to right child */
 struct Node
 {
     int data;
-    struct Node* left, *right;
+    struct Node *left, *right;
     Node(int data)
     {
         this->data = data;
@@ -19,7 +19,7 @@ struct Node
 
 /* Given a binary tree, print its nodes according to the
 "bottom-up" postorder traversal. */
-void printPostorder(struct Node* node)
+void printPostorder(struct Node *node)
 {
     if (node == NULL)
         return;
@@ -35,7 +35,7 @@ void printPostorder(struct Node* node)
 }
 
 /* Given a binary tree, print its nodes in inorder*/
-void printInorder(struct Node* node)
+void printInorder(struct Node *node)
 {
     if (node == NULL)
         return;
@@ -51,7 +51,7 @@ void printInorder(struct Node* node)
 }
 
 /* Given a binary tree, print its nodes in preorder*/
-void printPreorder(struct Node* node)
+void printPreorder(struct Node *node)
 {
     if (node == NULL)
         return;
@@ -68,25 +68,34 @@ void printPreorder(struct Node* node)
 
 void printPreorder2(Node *root)
 {
-    Node* node = root;
+    Node *node = root;
     bool visited = false;
-    std::stack<Node*> stack;
+    std::stack<Node *> stack;
 
-    while (node) {
-        if (!visited) {
+    while (node)
+    {
+        if (!visited)
+        {
             cout << node->data << ' ';
         }
-        if (node->left && !visited) {
+        if (node->left && !visited)
+        {
             stack.push(node);
             node = node->left;
-        } else if (node->right) {
+        }
+        else if (node->right)
+        {
             node = node->right;
             visited = false;
-        } else if (!stack.empty()) {
+        }
+        else if (!stack.empty())
+        {
             node = stack.top();
             visited = true;
             stack.pop();
-        } else {
+        }
+        else
+        {
             break;
         }
     }
@@ -94,23 +103,33 @@ void printPreorder2(Node *root)
     cout << endl;
 }
 
-void printInOrder2(Node* root) {
-    Node* node = root;
+void printInOrder2(Node *root)
+{
+    Node *node = root;
     bool visited = false;
-    std::stack<Node*> stack;
+    std::stack<Node *> stack;
 
-    while (node) {
-        if (node->left && !visited) {
+    while (node)
+    {
+        if (node->left && !visited)
+        {
             stack.push(node);
             node = node->left;
-        } else if (node->right) {
+        }
+        else if (node->right)
+        {
             node = node->right;
             visited = false;
-        } else {
+        }
+        else
+        {
             cout << node->data << ' ';
-            if (stack.empty()) {
+            if (stack.empty())
+            {
                 break;
-            } else {
+            }
+            else
+            {
                 node = stack.top();
                 visited = true;
                 stack.pop();
@@ -122,13 +141,46 @@ void printInOrder2(Node* root) {
     std::cout << endl;
 }
 
+void printPostorder2(Node *root)
+{
+    Node *node = root;
+    bool visited = false;
+    std::stack<Node *> stack;
+
+    while (node)
+    {
+        if (node->left)
+        {
+            stack.push(node);
+            node = node->left;
+            visited = false;
+        }
+        else if (node->right)
+        {
+            stack.push(node);
+            node = node->right;
+            visited = true;
+        }
+        else
+        {
+            cout << node->data  << ' ';
+            if (stack.empty()) {
+                break;
+            } else {
+                node = stack.top();
+                stack.pop();
+            }
+        }
+    }
+}
+
 /* Driver program to test above functions*/
 int main()
 {
     struct Node *root = new Node(1);
-    root->left             = new Node(2);
-    root->right         = new Node(3);
-    root->left->left     = new Node(4);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
     root->left->right = new Node(5);
 
     cout << "\nPreorder traversal of binary tree is \n";
@@ -142,7 +194,6 @@ int main()
 
     cout << "\nPreorder cycle\n";
     printPreorder2(root);
-
 
     cout << "\nInorder cycle\n";
     printInOrder2(root);
