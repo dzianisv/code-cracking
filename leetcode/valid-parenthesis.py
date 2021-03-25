@@ -10,13 +10,16 @@ An input string is valid if:
 """
 
 pairs = { '}':'{', ')':'(', ']':'['}
+open_chars = set(pairs.values())
+close_chars = set(paris.keys())
+
 class Solution(object):
     def isValid(self, s):
         stack = list()
         for c in s:
-            if c in set(pairs.values()):
+            if c in open_chars:
                 stack.append(c)
-            elif c in set(pairs.keys()):
+            elif c in close_chars:
                 if len(stack) == 0:
                     return False
                 if stack.pop() != pairs[c]:
