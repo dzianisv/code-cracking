@@ -9,9 +9,9 @@ An input string is valid if:
  
 """
 
-pairs = { '}':'{', ')':'(', ']':'['}
-open_chars = set(pairs.values())
-close_chars = set(paris.keys())
+chars = { '}':'{', ')':'(', ']':'['}
+open_chars = set(chars.values())
+close_chars = set(chars.keys())
 
 class Solution(object):
     def isValid(self, s):
@@ -22,7 +22,7 @@ class Solution(object):
             elif c in close_chars:
                 if len(stack) == 0:
                     return False
-                if stack.pop() != pairs[c]:
+                if stack.pop() != chars[c]:
                     return False
 
         return len(stack) == 0
