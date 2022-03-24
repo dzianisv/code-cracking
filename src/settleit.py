@@ -123,11 +123,3 @@ assert settle([
         SettleTransaction("Averi", "Rose", 150), 
         SettleTransaction("Jaye", "Rose", 150)
     ]
-
-assert settle([
-        Transaction("Rose", 400, ["Rose", "Averi", "Isham", "Jaye"]), 
-        Transaction("Isham", 100, ["Averi", "Jaye"])
-    ]) == [
-        SettleTransaction("Averi", "Rose", 150), 
-        SettleTransaction("Jaye", "Rose", 150)
-    ]
